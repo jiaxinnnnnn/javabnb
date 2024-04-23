@@ -9,6 +9,7 @@ import Clases.InmuebleServicios;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import Clases.ClienteAnfitrion;
 
 public class GestionInmuebles {
 
