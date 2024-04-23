@@ -2,7 +2,7 @@ package GestionClases;
 
 import Clases.PersonaAdmin;
 import Clases.PersonaAdmin;
-
+import Clases.PersonaAdmin;
 //public class GestionSesionAdmin {
 
     //private static final String FILENAME = "usuarios.dat";
