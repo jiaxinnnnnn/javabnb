@@ -30,4 +30,9 @@ public class GestionInmuebles {
         
 
     }
+    
+    public void modificarInmueble (String nuevotitulo, double nuevoprecio, boolean nuevocasa, boolean nuevoapartamento, String nuevodireccion ,String nuevocodigoPostal, String nuevociudad, int nuevonumHuesped,int nuevonumHab, int nuevonumCama, int nuevonumBaño){
+        
+
+    }
 }

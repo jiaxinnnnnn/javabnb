@@ -47,15 +47,15 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="96" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="botonEntrar" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="49" max="32767" attributes="0"/>
-                                  <Component id="botonNoTengoCuenta" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Component id="correoIS" min="-2" pref="83" max="-2" attributes="0"/>
-                              <Component id="textCorreoIS" max="32767" attributes="0"/>
+                              <Component id="textCorreoIS" pref="247" max="32767" attributes="0"/>
                               <Component id="claveIS" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
                               <Component id="textClaveIS" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="botonNoTengoCuenta" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="botonEntrar" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -78,8 +78,8 @@
                   <Component id="textClaveIS" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="botonEntrar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="botonNoTengoCuenta" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="botonEntrar" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="68" max="32767" attributes="0"/>
               </Group>

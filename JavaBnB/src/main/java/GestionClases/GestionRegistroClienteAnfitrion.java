@@ -15,6 +15,7 @@ public class GestionRegistroClienteAnfitrion {
         ClienteAnfitrion clienteanfitrion = new ClienteAnfitrion ( fecha, superanfitrion, correo, clave, nombre, dni,telefono);
 
         listaClientesAnfitrion.add(clienteanfitrion);
+        System.out.println(listaClientesAnfitrion);
     }
 
     public boolean validarClienteAnfitrion(String correo, String clave) {
