@@ -144,9 +144,19 @@ public class PantallaSesion extends javax.swing.JFrame {
             this.dispose();
             pantalla1.setLocationRelativeTo(null);
 
-        }
-        else {
-            System.out.println("Hay un error");
+        } else if ("Adios".equals(texto) && "Hola".equals(texto2)){
+            PantallaClienteParticular pantalla2 = new PantallaClienteParticular();
+            pantalla2.setVisible(true);
+            this.dispose();
+            pantalla2.setLocationRelativeTo(null);
+        
+        } else if ("11".equals(texto) && "22".equals(texto2)){
+            PantallaAdmin pantalla3 = new PantallaAdmin();
+            pantalla3.setVisible(true);
+            this.dispose();
+            pantalla3.setLocationRelativeTo(null);
+        
+        
         
         }
 

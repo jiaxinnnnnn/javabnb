@@ -431,7 +431,10 @@ public class PantallaClienteAnfitrionModifica extends javax.swing.JFrame {
     }//GEN-LAST:event_boolInmuebleApartActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        PantallaClienteAnfitrionModificaSeguro pantalla11 = new PantallaClienteAnfitrionModificaSeguro();
+        pantalla11.setVisible(true);
+        pantalla11.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
