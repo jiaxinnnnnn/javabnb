@@ -19,6 +19,10 @@ public class GestionInmuebles {
 
     public void registrarInmueble(String titulo, double precio, boolean casa, boolean apartamento, String direccion ,String codigoPostal, String ciudad, int numHuesped,int numHab, int numCama, int numBaño) {
         
+        
+        
+        
+        
         InmuebleDireccion direccionTotal = new InmuebleDireccion();
         
         InmuebleDatos datos = new InmuebleDatos();

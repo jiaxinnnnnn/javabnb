@@ -1,5 +1,7 @@
 package interfaz;
 
+
+
 public class PantallaClienteAnfitron extends javax.swing.JFrame {
 
     /**

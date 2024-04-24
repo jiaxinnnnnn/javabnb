@@ -356,42 +356,43 @@ public class PantallaClienteAnfitrionCrear extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String textoTitulo= new String();
-        String textoPrecio = new String();
-        double numInmueblePrecio = Double.parseDouble(textoPrecio);
-        
-        //Image
-        //calificacion
-        boolean casa = boolInmuebleCasa.isSelected();
+                boolean casa = boolInmuebleCasa.isSelected();
         boolean apart = boolInmuebleApart.isSelected();
-        String textoCalle= new String();
-        String textoCPostal= new String();
-        String textoCiudad= new String();
-        
-        String textNHuesped = new String();
-        int numInmuebleNHuesped = Integer.parseInt(textNHuesped);
-        int numNHuesped = numInmuebleNHuesped;
-        
-        String textNCama = new String();
-        int numInmuebleNCama = Integer.parseInt(textNCama);
-        int numNCama = numInmuebleNCama;
-        
-        String textNHab = new String();
-        int numInmuebleNHab = Integer.parseInt(textNHuesped);    
-        int numNHab = numInmuebleNHab;
-        
-        String textNBaño = new String();
-        int numInmuebleNBaño = Integer.parseInt(textNBaño);
-        int numNBaño = numInmuebleNBaño;
-        
-        textoTitulo = textInmuebleTitulo.getText();
-        textoCalle = textInmuebleCalle.getText();
-        textoCPostal = textInmuebleCPostal.getText();
-        textoCiudad = textInmuebleCiudad.getText();
-        
+
+        String textoTitulo = textInmuebleTitulo.getText();
+        String textoPrecio = textInmueblePrecio.getText();
+        String textoCalle = textInmuebleCalle.getText();
+        String textoCPostal = textInmuebleCPostal.getText();
+        String textoCiudad = textInmuebleCiudad.getText();
+        String textNHuesped = textInmuebleNHuesped.getText();
+        String textNCama = textInmuebleNCama.getText();
+        String textNHab = textInmuebleNHab.getText();
+        String textNBaño = textInmuebleNBaño.getText();
+    
+ 
+        double numInmueblePrecio = 0.0;
+        int numNHuesped = 0;
+        int numNCama = 0;
+        int numNHab = 0;
+        int numNBaño = 0;
+
+    try {
+        numInmueblePrecio = Double.parseDouble(textoPrecio);
+        numNHuesped = Integer.parseInt(textNHuesped);
+        numNCama = Integer.parseInt(textNCama);
+        numNHab = Integer.parseInt(textNHab);
+        numNBaño = Integer.parseInt(textNBaño);
+    } catch (NumberFormatException e) {
+        System.out.println("Error al convertir texto a número: " + e.getMessage());
+        return; 
+    }
+
+    
+
+
+
         GestionInmuebles gestioninmueblenew = new GestionInmuebles();
         gestioninmueblenew.registrarInmueble(textoTitulo, numInmueblePrecio, casa, apart, textoCalle, textoCPostal, textoCiudad, numNHuesped, numNHab, numNCama, numNBaño);
-
         
         
         
