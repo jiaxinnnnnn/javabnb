@@ -1,23 +1,23 @@
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitrionCrear.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitrionModificar.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\GestionClases\GestionRegistroClienteAnfitrion.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaAdmin.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\Inmueble.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\poo\javabnb\JavaBnB1.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\GestionClases\GestionRegistroClienteParticular.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\InmuebleServicios.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\PersonaAdmin.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaSesion.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitrionEliminar.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\InmuebleDatos.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\GestionClases\GestionSesionAdmin.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\GestionClases\GestionInmuebles.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\Cliente.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\ClienteParticular.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaRegistros.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\poo\javabnb\JavaBnB.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitron.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\InmuebleDireccion.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\Pantalla.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\Clases\ClienteAnfitrion.java
-C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\JavaBnB\src\main\java\interfaz\PantallaClienteParticular.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\Inmueble.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\GestionClases\GestionInmuebles.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\PersonaAdmin.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaSesion.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitrionCrear.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\poo\javabnb\JavaBnB.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitrionModificaSeguro.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\ClienteAnfitrion.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\ClienteParticular.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaRegistros.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\Cliente.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\Pantalla.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\GestionClases\GestionSesionAdmin.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitron.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\poo\javabnb\JavaBnB1.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\GestionClases\GestionRegistroClienteAnfitrion.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\InmuebleDireccion.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\InmuebleDatos.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\GestionClases\GestionRegistroClienteParticular.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaAdmin.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\Clases\InmuebleServicios.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaClienteParticular.java
+C:\Users\jiaxi\OneDrive\Documentos\NetBeansProjects\New Folder\javabnb\JavaBnB\src\main\java\interfaz\PantallaClienteAnfitrionModifica.java

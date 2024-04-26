@@ -19,6 +19,10 @@ public class GestionInmuebles {
 
     public void registrarInmueble(String titulo, double precio, boolean casa, boolean apartamento, String direccion ,String codigoPostal, String ciudad, int numHuesped,int numHab, int numCama, int numBaño) {
         
+        
+        
+        
+        
         InmuebleDireccion direccionTotal = new InmuebleDireccion();
         
         InmuebleDatos datos = new InmuebleDatos();
@@ -27,6 +31,11 @@ public class GestionInmuebles {
 
         listaInmueble.add(inmueble);
         System.out.println(listaInmueble);
+        
+
+    }
+   
+    public void modificarInmueble (String nuevotitulo, double nuevoprecio, boolean nuevocasa, boolean nuevoapartamento, String nuevodireccion ,String nuevocodigoPostal, String nuevociudad, int nuevonumHuesped,int nuevonumHab, int nuevonumCama, int nuevonumBaño){
         
 
     }

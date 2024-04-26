@@ -1,5 +1,6 @@
 package interfaz;
 
+import GestionClases.GestionRegistroClienteParticular;
 import interfaz.PantallaAdmin;
 import interfaz.PantallaClienteAnfitron;
 import interfaz.PantallaClienteParticular;
@@ -81,14 +82,14 @@ public class PantallaSesion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botonEntrar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                                .addComponent(botonNoTengoCuenta))
                             .addComponent(correoIS, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textCorreoIS)
+                            .addComponent(textCorreoIS, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                             .addComponent(claveIS, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textClaveIS))))
+                            .addComponent(textClaveIS)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(botonNoTengoCuenta)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(botonEntrar)))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -106,8 +107,8 @@ public class PantallaSesion extends javax.swing.JFrame {
                 .addComponent(textClaveIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonEntrar)
-                    .addComponent(botonNoTengoCuenta))
+                    .addComponent(botonNoTengoCuenta)
+                    .addComponent(botonEntrar))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
@@ -133,10 +134,26 @@ public class PantallaSesion extends javax.swing.JFrame {
         //if la entrada coincide con algo de la tabla de los adminso con
         //la tabal de anfitriones o clientes.
 
-        String texto = new String();
-        String texto2 = new String();
-        texto = textCorreoIS.getText();
-        texto2 = textClaveIS.getText();
+        String texto = textCorreoIS.getText();
+        String texto2 = textClaveIS.getText();
+
+        
+        
+        GestionRegistroClienteParticular clienteparticular = new GestionRegistroClienteParticular();
+        boolean correoClave = clienteparticular.validarClienteParticular(texto, texto2);
+        
+        if (correoClave==true){
+            PantallaClienteParticular pantalla3 = new PantallaClienteParticular();
+            pantalla3.setVisible(true);
+            this.dispose();
+            pantalla3.setLocationRelativeTo(null);
+        } else {
+            System.out.println("Ha ocurrido un error");
+        
+        }
+        
+        
+        
         if ("Hola".equals(texto) && "Adios".equals(texto2)) {
 
             PantallaClienteAnfitron pantalla1 = new PantallaClienteAnfitron();
@@ -144,9 +161,19 @@ public class PantallaSesion extends javax.swing.JFrame {
             this.dispose();
             pantalla1.setLocationRelativeTo(null);
 
-        }
-        else {
-            System.out.println("Hay un error");
+        } else if ("Adios".equals(texto) && "Hola".equals(texto2)){
+            PantallaClienteParticular pantalla2 = new PantallaClienteParticular();
+            pantalla2.setVisible(true);
+            this.dispose();
+            pantalla2.setLocationRelativeTo(null);
+        
+        } else if ("11".equals(texto) && "22".equals(texto2)){
+            PantallaAdmin pantalla3 = new PantallaAdmin();
+            pantalla3.setVisible(true);
+            this.dispose();
+            pantalla3.setLocationRelativeTo(null);
+        } else {
+            System.out.println("Ha habido un error");
         
         }
 

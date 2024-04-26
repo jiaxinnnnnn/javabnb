@@ -1,9 +1,8 @@
-
 package interfaz;
 
 import Clases.ClienteParticular;
+import GestionClases.GestionRegistroClienteAnfitrion;
 import GestionClases.GestionRegistroClienteParticular;
-
 
 public class PantallaRegistros extends javax.swing.JFrame {
 
@@ -23,6 +22,7 @@ public class PantallaRegistros extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         nombreRegistro = new javax.swing.JLabel();
         textNombreRegistro = new javax.swing.JTextField();
@@ -37,6 +37,9 @@ public class PantallaRegistros extends javax.swing.JFrame {
         telefonoRegistro = new javax.swing.JLabel();
         textTelefonoRegistro = new javax.swing.JTextField();
         botonYaTengoCuenta = new javax.swing.JButton();
+        boolRegistroParticular = new javax.swing.JRadioButton();
+        boolRegistroAnfitrion = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,6 +112,24 @@ public class PantallaRegistros extends javax.swing.JFrame {
             }
         });
 
+        buttonGroup1.add(boolRegistroParticular);
+        boolRegistroParticular.setText("Particular");
+        boolRegistroParticular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boolRegistroParticularActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(boolRegistroAnfitrion);
+        boolRegistroAnfitrion.setText("Anfitrión");
+        boolRegistroAnfitrion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boolRegistroAnfitrionActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Quiero iniciar como:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -128,18 +149,23 @@ public class PantallaRegistros extends javax.swing.JFrame {
                                     .addComponent(txtDniRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(telefonoRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                            .addComponent(botonRegistrarme)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(boolRegistroAnfitrion, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(botonYaTengoCuenta))
-                                        .addComponent(textTelefonoRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(boolRegistroParticular, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(botonYaTengoCuenta)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(botonRegistrarme))
+                                        .addComponent(textTelefonoRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(nombreRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textNombreRegistro)
                                     .addComponent(claveRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textCorreoRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                                     .addComponent(textClaveRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))))))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,20 +192,26 @@ public class PantallaRegistros extends javax.swing.JFrame {
                 .addComponent(telefonoRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(textTelefonoRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRegistrarme)
-                    .addComponent(botonYaTengoCuenta))
-                .addContainerGap(30, Short.MAX_VALUE))
+                    .addComponent(boolRegistroAnfitrion)
+                    .addComponent(boolRegistroParticular))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonYaTengoCuenta)
+                    .addComponent(botonRegistrarme))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void textNombreRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textNombreRegistroActionPerformed
-        
+
     }//GEN-LAST:event_textNombreRegistroActionPerformed
 
     private void textCorreoRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textCorreoRegistroActionPerformed
@@ -187,7 +219,7 @@ public class PantallaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_textCorreoRegistroActionPerformed
 
     private void botonRegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistrarmeActionPerformed
-        
+
     }//GEN-LAST:event_botonRegistrarmeActionPerformed
 
     private void textClaveRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textClaveRegistroActionPerformed
@@ -203,7 +235,7 @@ public class PantallaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_textTelefonoRegistroActionPerformed
 
     private void botonYaTengoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonYaTengoCuentaActionPerformed
-        
+
     }//GEN-LAST:event_botonYaTengoCuentaActionPerformed
 
     private void botonYaTengoCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonYaTengoCuentaMouseClicked
@@ -211,46 +243,66 @@ public class PantallaRegistros extends javax.swing.JFrame {
         boton.setVisible(true);
         this.dispose();
         boton.setLocationRelativeTo(null);
-        
-        
+
+
     }//GEN-LAST:event_botonYaTengoCuentaMouseClicked
 
     private void botonRegistrarmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarmeMouseClicked
         //guardado en todas las variables
         
-        
-        String textoNombreRegistros = new String();
-        String textoCorreoRegistros = new String();
-        String textoClaveRegistros = new String();
-        String textoDniRegistros = new String();
-        String textoTelRegistros = new String();
-        
+        String textoNombreRegistros = textNombreRegistro.getText();
+        String textoCorreoRegistros = textCorreoRegistro.getText();
+        String textoClaveRegistros = textClaveRegistro.getText();
+        String textoDniRegistros = txtDniRegistro.getText();
+        String textoTelRegistros = textTelefonoRegistro.getText();
+        boolean anfitrion = boolRegistroAnfitrion.isSelected();
+        boolean particular = boolRegistroParticular.isSelected();
 
-        textoNombreRegistros = textNombreRegistro.getText();
-        textoCorreoRegistros = textCorreoRegistro.getText();
-        textoClaveRegistros = textClaveRegistro.getText();
-        textoDniRegistros = txtDniRegistro.getText();
-        textoTelRegistros = textTelefonoRegistro.getText();
-              
-        GestionRegistroClienteParticular gestionpartnew = new GestionRegistroClienteParticular();
-        gestionpartnew.registrarClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros,  textoDniRegistros, textoTelRegistros);
+
+        if (particular == true) {
+            GestionRegistroClienteParticular gestionpartnew = new GestionRegistroClienteParticular();
+            gestionpartnew.registrarClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
+            //PantallaClienteParticular pantallapart = new PantallaClienteParticular();
+            //pantallapart.setVisible(true);
+            //pantallapart.setLocationRelativeTo(null);
+            
+
+        } else if (anfitrion == true) {
+            GestionRegistroClienteAnfitrion gestionanfnew = new GestionRegistroClienteAnfitrion();
+            gestionanfnew.registrarClienteAnfitrion(null, false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
+            //PantallaClienteAnfitron pantallaanfitrion = new PantallaClienteAnfitron();
+            //pantallaanfitrion.setVisible(true);
+            //pantallaanfitrion.setLocationRelativeTo(null);
+            
+
+        }
+
         //vip false al principio
-        
-        
-        
+
     }//GEN-LAST:event_botonRegistrarmeMouseClicked
+
+    private void boolRegistroParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolRegistroParticularActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boolRegistroParticularActionPerformed
+
+    private void boolRegistroAnfitrionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolRegistroAnfitrionActionPerformed
+
+    }//GEN-LAST:event_boolRegistroAnfitrionActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton boolRegistroAnfitrion;
+    private javax.swing.JRadioButton boolRegistroParticular;
     private javax.swing.JButton botonRegistrarme;
     private javax.swing.JButton botonYaTengoCuenta;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel claveRegistro;
     private javax.swing.JLabel correoRegistro;
     private javax.swing.JLabel dniRegistro;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombreRegistro;
     private javax.swing.JLabel nombreRegistro1;
