@@ -14,7 +14,6 @@ public class GestionRegistroClienteParticular {
         ClienteParticular clienteparticular = new ClienteParticular(vip, correo, clave, nombre, dni, telefono);
 
         listaClientesParticular.add(clienteparticular);
-        System.out.println(listaClientesParticular);
     }
 
     public boolean validarClienteParticular(String correo, String clave) {
