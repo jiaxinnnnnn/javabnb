@@ -14,13 +14,21 @@ public class GestionRegistroClienteParticular {
         ClienteParticular clienteparticular = new ClienteParticular(vip, correo, clave, nombre, dni, telefono);
 
         listaClientesParticular.add(clienteparticular);
+        System.out.println(listaClientesParticular);
     }
 
     public boolean validarClienteParticular(String correo, String clave) {
+        //comprobar si hay algo en la lista
+        
+        if (listaClientesParticular.isEmpty()) {
+            System.out.println("La lista de clientes particulares está vacía.");
+        } else {
+            System.out.println("La lista de clientes particulares no está vacía.");
+        }
         for (ClienteParticular clienteparticular : listaClientesParticular) {
-            //String correoUsuario = cliente.getCorreo();
-            //String claveUsuario = cliente.getClave();
-            if (clienteparticular.getCorreo().equals(correo) && clienteparticular.getClave().equals(clave)) {
+            String correoUsuario = clienteparticular.getCorreo();
+            String claveUsuario = clienteparticular.getClave();
+            if (correoUsuario.equals(correo) && claveUsuario.equals(clave)) {
                 return true; //pasa siguiente pantalla
             }
         }
