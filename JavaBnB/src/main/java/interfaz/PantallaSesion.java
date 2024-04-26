@@ -1,5 +1,6 @@
 package interfaz;
 
+import GestionClases.GestionRegistroClienteParticular;
 import interfaz.PantallaAdmin;
 import interfaz.PantallaClienteAnfitron;
 import interfaz.PantallaClienteParticular;
@@ -133,10 +134,26 @@ public class PantallaSesion extends javax.swing.JFrame {
         //if la entrada coincide con algo de la tabla de los adminso con
         //la tabal de anfitriones o clientes.
 
-        String texto = new String();
-        String texto2 = new String();
-        texto = textCorreoIS.getText();
-        texto2 = textClaveIS.getText();
+        String texto = textCorreoIS.getText();
+        String texto2 = textClaveIS.getText();
+
+        
+        
+        GestionRegistroClienteParticular clienteparticular = new GestionRegistroClienteParticular();
+        boolean correoClave = clienteparticular.validarClienteParticular(texto, texto2);
+        
+        if (correoClave==true){
+            PantallaClienteParticular pantalla3 = new PantallaClienteParticular();
+            pantalla3.setVisible(true);
+            this.dispose();
+            pantalla3.setLocationRelativeTo(null);
+        } else {
+            System.out.println("Ha ocurrido un error");
+        
+        }
+        
+        
+        
         if ("Hola".equals(texto) && "Adios".equals(texto2)) {
 
             PantallaClienteAnfitron pantalla1 = new PantallaClienteAnfitron();
@@ -155,8 +172,8 @@ public class PantallaSesion extends javax.swing.JFrame {
             pantalla3.setVisible(true);
             this.dispose();
             pantalla3.setLocationRelativeTo(null);
-        
-        
+        } else {
+            System.out.println("Ha habido un error");
         
         }
 
