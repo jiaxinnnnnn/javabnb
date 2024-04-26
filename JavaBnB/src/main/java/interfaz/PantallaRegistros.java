@@ -249,35 +249,30 @@ public class PantallaRegistros extends javax.swing.JFrame {
 
     private void botonRegistrarmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarmeMouseClicked
         //guardado en todas las variables
-
-        String textoNombreRegistros = new String();
-        String textoCorreoRegistros = new String();
-        String textoClaveRegistros = new String();
-        String textoDniRegistros = new String();
-        String textoTelRegistros = new String();
+        
+        String textoNombreRegistros = textNombreRegistro.getText();
+        String textoCorreoRegistros = textCorreoRegistro.getText();
+        String textoClaveRegistros = textClaveRegistro.getText();
+        String textoDniRegistros = txtDniRegistro.getText();
+        String textoTelRegistros = textTelefonoRegistro.getText();
         boolean anfitrion = boolRegistroAnfitrion.isSelected();
         boolean particular = boolRegistroParticular.isSelected();
 
-        textoNombreRegistros = textNombreRegistro.getText();
-        textoCorreoRegistros = textCorreoRegistro.getText();
-        textoClaveRegistros = textClaveRegistro.getText();
-        textoDniRegistros = txtDniRegistro.getText();
-        textoTelRegistros = textTelefonoRegistro.getText();
 
         if (particular == true) {
             GestionRegistroClienteParticular gestionpartnew = new GestionRegistroClienteParticular();
             gestionpartnew.registrarClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-            PantallaClienteParticular pantallapart = new PantallaClienteParticular();
-            pantallapart.setVisible(true);
-            pantallapart.setLocationRelativeTo(null);
+            //PantallaClienteParticular pantallapart = new PantallaClienteParticular();
+            //pantallapart.setVisible(true);
+            //pantallapart.setLocationRelativeTo(null);
             
 
         } else if (anfitrion == true) {
             GestionRegistroClienteAnfitrion gestionanfnew = new GestionRegistroClienteAnfitrion();
             gestionanfnew.registrarClienteAnfitrion(null, false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-            PantallaClienteAnfitron pantallaanfitrion = new PantallaClienteAnfitron();
-            pantallaanfitrion.setVisible(true);
-            pantallaanfitrion.setLocationRelativeTo(null);
+            //PantallaClienteAnfitron pantallaanfitrion = new PantallaClienteAnfitron();
+            //pantallaanfitrion.setVisible(true);
+            //pantallaanfitrion.setLocationRelativeTo(null);
             
 
         }
