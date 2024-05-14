@@ -1,6 +1,7 @@
 interfaz\PantallaClienteAnfitrionModifica$4.class
 interfaz\PantallaClienteAnfitrionModificaSeguro.class
 Clases\Inmueble.class
+interfaz\PantallaInicial.class
 interfaz\PantallaRegistros$1.class
 interfaz\PantallaRegistros$4.class
 interfaz\PantallaRegistros$10.class
@@ -52,6 +53,7 @@ interfaz\PantallaSesion$6.class
 GestionClases\GestionRegistroClienteAnfitrion.class
 interfaz\PantallaRegistros$11.class
 Clases\PersonaAdmin.class
+interfaz\PantallaInicial$1.class
 interfaz\PantallaClienteAnfitrionCrear$4.class
 interfaz\PantallaAdmin.class
 interfaz\PantallaClienteAnfitrionModifica$6.class

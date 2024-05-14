@@ -3,6 +3,9 @@ package interfaz;
 import Clases.ClienteParticular;
 import GestionClases.GestionRegistroClienteAnfitrion;
 import GestionClases.GestionRegistroClienteParticular;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PantallaRegistros extends javax.swing.JFrame {
 
@@ -157,8 +160,7 @@ public class PantallaRegistros extends javax.swing.JFrame {
                                             .addComponent(botonYaTengoCuenta)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(botonRegistrarme))
-                                        .addComponent(textTelefonoRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(textTelefonoRegistro, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(nombreRegistro1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(textNombreRegistro)
@@ -166,6 +168,10 @@ public class PantallaRegistros extends javax.swing.JFrame {
                                     .addComponent(textCorreoRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                                     .addComponent(textClaveRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))))))
                 .addContainerGap(84, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(126, 126, 126))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,10 +267,16 @@ public class PantallaRegistros extends javax.swing.JFrame {
 
         if (particular == true) {
             GestionRegistroClienteParticular gestionpartnew = new GestionRegistroClienteParticular();
-            gestionpartnew.registrarClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-            //PantallaClienteParticular pantallapart = new PantallaClienteParticular();
-            //pantallapart.setVisible(true);
-            //pantallapart.setLocationRelativeTo(null);
+            try {
+                gestionpartnew.registrarClienteParticulares(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
+                //PantallaClienteParticular pantallapart = new PantallaClienteParticular();
+                //pantallapart.setVisible(true);
+                //pantallapart.setLocationRelativeTo(null);
+            } catch (IOException ex) {
+                Logger.getLogger(PantallaRegistros.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(PantallaRegistros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
 
         } else if (anfitrion == true) {
