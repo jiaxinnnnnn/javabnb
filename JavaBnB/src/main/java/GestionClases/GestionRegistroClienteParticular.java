@@ -22,8 +22,8 @@ public class GestionRegistroClienteParticular {
 
         ClienteParticular clienteparticular = new ClienteParticular(vip, correo, clave, nombre, dni, telefono);
 
-        HashMap<String, String> hashmap1 = new HashMap<>();
-        hashmap1.put(clienteparticular.getCorreo(), clienteparticular.getClave());
+        HashMap<String, ClienteParticular> hashmap1 = new HashMap<>();
+        hashmap1.put(clienteparticular.getCorreo(), clienteparticular);
 
         //fata excepciones
         FileOutputStream fosPer = new FileOutputStream("hashmapclienteparticular.dat");
