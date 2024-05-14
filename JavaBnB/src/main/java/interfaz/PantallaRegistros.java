@@ -3,6 +3,9 @@ package interfaz;
 import Clases.ClienteParticular;
 import GestionClases.GestionRegistroClienteAnfitrion;
 import GestionClases.GestionRegistroClienteParticular;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PantallaRegistros extends javax.swing.JFrame {
 
@@ -261,10 +264,16 @@ public class PantallaRegistros extends javax.swing.JFrame {
 
         if (particular == true) {
             GestionRegistroClienteParticular gestionpartnew = new GestionRegistroClienteParticular();
-            gestionpartnew.registrarClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-            //PantallaClienteParticular pantallapart = new PantallaClienteParticular();
-            //pantallapart.setVisible(true);
-            //pantallapart.setLocationRelativeTo(null);
+            try {
+                gestionpartnew.registrarClienteParticulares(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
+                //PantallaClienteParticular pantallapart = new PantallaClienteParticular();
+                //pantallapart.setVisible(true);
+                //pantallapart.setLocationRelativeTo(null);
+            } catch (IOException ex) {
+                Logger.getLogger(PantallaRegistros.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(PantallaRegistros.class.getName()).log(Level.SEVERE, null, ex);
+            }
             
 
         } else if (anfitrion == true) {
