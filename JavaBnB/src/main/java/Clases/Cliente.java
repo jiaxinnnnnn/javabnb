@@ -9,6 +9,8 @@ public class Cliente extends PersonaAdmin implements Serializable {
     private String dni;
 
     private String telefono;
+    
+    public Cliente(){}
 
     public Cliente(String correo, String clave, String nombre, String dni, String telefono) {
         super(correo, clave);
@@ -17,9 +19,6 @@ public class Cliente extends PersonaAdmin implements Serializable {
         this.telefono = telefono;
     }
 
-    public Cliente(String correo, String clave) {
-        super(correo, clave);
-    }
 
     public String getTelefono() {
         return telefono;

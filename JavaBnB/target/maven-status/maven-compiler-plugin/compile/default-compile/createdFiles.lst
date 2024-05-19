@@ -1,3 +1,4 @@
+Clases\TarjetaCrédito.class
 interfaz\PantallaClienteAnfitrionModifica$4.class
 interfaz\PantallaClienteAnfitrionModificaSeguro.class
 Clases\Inmueble.class
@@ -13,7 +14,9 @@ interfaz\PantallaRegistros$8.class
 interfaz\Pantalla$4.class
 interfaz\PantallaClienteAnfitrionModifica$7.class
 interfaz\PantallaSesion$5.class
+interfaz\PantallaInicial$3.class
 interfaz\PantallaAdmin$1.class
+interfaz\PantallaSesionAdmin$1.class
 Clases\Cliente.class
 interfaz\PantallaClienteParticular$1.class
 interfaz\PantallaRegistros.class
@@ -24,6 +27,8 @@ interfaz\PantallaClienteAnfitrionCrear$3.class
 interfaz\Pantalla$1.class
 interfaz\PantallaClienteAnfitrionModifica$5.class
 interfaz\PantallaClienteParticular.class
+interfaz\PantallaSesionAdmin$4.class
+interfaz\PantallaSesionAdmin.class
 poo\javabnb\JavaBnB1.class
 Clases\ClienteAnfitrion.class
 interfaz\PantallaClienteAnfitrionModificaSeguro$1.class
@@ -35,7 +40,9 @@ poo\javabnb\JavaBnB.class
 interfaz\PantallaClienteAnfitrionCrear$6.class
 GestionClases\GestionRegistroClienteParticular.class
 interfaz\PantallaRegistros$6.class
+interfaz\PantallaSesionAdmin$2.class
 interfaz\Pantalla$2.class
+interfaz\PantallaInicial$2.class
 Clases\ClienteParticular.class
 interfaz\PantallaRegistros$9.class
 interfaz\PantallaClienteAnfitron$3.class
@@ -53,6 +60,7 @@ interfaz\PantallaSesion$6.class
 GestionClases\GestionRegistroClienteAnfitrion.class
 interfaz\PantallaRegistros$11.class
 Clases\PersonaAdmin.class
+interfaz\PantallaSesionAdmin$3.class
 interfaz\PantallaInicial$1.class
 interfaz\PantallaClienteAnfitrionCrear$4.class
 interfaz\PantallaAdmin.class

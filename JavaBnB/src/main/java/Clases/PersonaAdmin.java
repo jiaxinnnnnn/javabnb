@@ -1,6 +1,9 @@
 package Clases;
 
-public class PersonaAdmin {
+import java.io.Serializable;
+
+
+public class PersonaAdmin implements Serializable{
 
     private String correo;
     private String clave;
