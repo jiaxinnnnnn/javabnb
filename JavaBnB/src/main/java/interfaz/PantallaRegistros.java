@@ -1,18 +1,32 @@
 package interfaz;
 
+import Clases.Cliente;
+import Clases.ClienteAnfitrion;
 import Clases.ClienteParticular;
 import GestionClases.GestionRegistroClienteAnfitrion;
 import GestionClases.GestionRegistroClienteParticular;
+import interfaz.PantallaSesion;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
-public class PantallaRegistros extends javax.swing.JFrame {
+public class PantallaRegistros extends javax.swing.JFrame implements Serializable {
+    
+
 
     /**
      * Creates new form Pantalla1 /constructor
      */
     public PantallaRegistros() {
+        super("Registro de Cliente");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -241,7 +255,7 @@ public class PantallaRegistros extends javax.swing.JFrame {
     }//GEN-LAST:event_textTelefonoRegistroActionPerformed
 
     private void botonYaTengoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonYaTengoCuentaActionPerformed
-
+        
     }//GEN-LAST:event_botonYaTengoCuentaActionPerformed
 
     private void botonYaTengoCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonYaTengoCuentaMouseClicked
@@ -266,28 +280,71 @@ public class PantallaRegistros extends javax.swing.JFrame {
 
 
         if (particular == true) {
-            GestionRegistroClienteParticular gestionpartnew = new GestionRegistroClienteParticular();
+            int n = JOptionPane.showConfirmDialog(this, "¿Es un cliente VIP?", "VIP", JOptionPane.YES_NO_CANCEL_OPTION);
+            if (n == JOptionPane.YES_OPTION) {
+                ClienteParticular clienteParticular = new ClienteParticular(true, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
+                 try {
+                    FileOutputStream fos = new FileOutputStream("clientes.txt"); 
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(clienteParticular);
+                }
+                catch (Exception e){
+                    System.out.print(e.toString());
+                }
+                JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
+                PantallaSesion ps = new PantallaSesion();
+                ps.setVisible(true);
+                this.dispose();
+                ps.setLocationRelativeTo(null);
+                }
+            else if (n == JOptionPane.NO_OPTION) {
+                ClienteParticular clienteParticular = new ClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
+                 try {
+                    FileOutputStream fos = new FileOutputStream("clientes.txt"); 
+                    ObjectOutputStream oos = new ObjectOutputStream(fos);
+                    oos.writeObject(clienteParticular);
+                }
+            catch (Exception e){
+                System.out.print(e.toString());
+            }   
+                JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
+                PantallaSesion ps = new PantallaSesion();
+                ps.setVisible(true);
+                ps.setLocationRelativeTo(null);
+                }
+            else {
+                PantallaRegistros pg = new PantallaRegistros();
+                pg.setVisible(true);
+                pg.setLocationRelativeTo(null);
+                }
+        }
+        else if (anfitrion == true) {
+            LocalDate fechaRegistro = new LocalDate.now();
+            ClienteAnfitrion clienteAnfitrion = new ClienteAnfitrion(fechaRegistro, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
             try {
-                gestionpartnew.registrarClienteParticulares(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-                //PantallaClienteParticular pantallapart = new PantallaClienteParticular();
-                //pantallapart.setVisible(true);
-                //pantallapart.setLocationRelativeTo(null);
-            } catch (IOException ex) {
-                Logger.getLogger(PantallaRegistros.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(PantallaRegistros.class.getName()).log(Level.SEVERE, null, ex);
+                FileOutputStream fos = new FileOutputStream("clientes.txt"); 
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(clienteAnfitrion);
             }
-            
+            catch (Exception e){
+                System.out.print(e.toString());
+            }
+            JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
+            PantallaSesion ps = new PantallaSesion();
+            ps.setVisible(true);
+            ps.setLocationRelativeTo(null);
+          
 
-        } else if (anfitrion == true) {
-            GestionRegistroClienteAnfitrion gestionanfnew = new GestionRegistroClienteAnfitrion();
-            gestionanfnew.registrarClienteAnfitrion(null, false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
             //PantallaClienteAnfitron pantallaanfitrion = new PantallaClienteAnfitron();
             //pantallaanfitrion.setVisible(true);
             //pantallaanfitrion.setLocationRelativeTo(null);
             
 
+        } 
+        else {
+            JOptionPane.showMessageDialog(this, "Por favor, seleccione un tipo de usuario.");
         }
+    }
 
         //vip false al principio
 
