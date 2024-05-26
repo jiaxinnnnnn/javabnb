@@ -1,5 +1,8 @@
 package interfaz;
 
+
+
+
 import Clases.Cliente;
 import Clases.ClienteAnfitrion;
 import Clases.ClienteParticular;
@@ -16,7 +19,8 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class PantallaRegistros extends javax.swing.JFrame implements Serializable {
+
+public class PantallaRegistros extends javax.swing.JFrame implemets Serializable{
     
 
 
@@ -255,7 +259,7 @@ public class PantallaRegistros extends javax.swing.JFrame implements Serializabl
     }//GEN-LAST:event_textTelefonoRegistroActionPerformed
 
     private void botonYaTengoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonYaTengoCuentaActionPerformed
-        
+
     }//GEN-LAST:event_botonYaTengoCuentaActionPerformed
 
     private void botonYaTengoCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonYaTengoCuentaMouseClicked
@@ -269,7 +273,7 @@ public class PantallaRegistros extends javax.swing.JFrame implements Serializabl
 
     private void botonRegistrarmeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonRegistrarmeMouseClicked
         //guardado en todas las variables
-        
+
         String textoNombreRegistros = textNombreRegistro.getText();
         String textoCorreoRegistros = textCorreoRegistro.getText();
         String textoClaveRegistros = textClaveRegistro.getText();
@@ -278,17 +282,15 @@ public class PantallaRegistros extends javax.swing.JFrame implements Serializabl
         boolean anfitrion = boolRegistroAnfitrion.isSelected();
         boolean particular = boolRegistroParticular.isSelected();
 
-
         if (particular == true) {
             int n = JOptionPane.showConfirmDialog(this, "¿Es un cliente VIP?", "VIP", JOptionPane.YES_NO_CANCEL_OPTION);
             if (n == JOptionPane.YES_OPTION) {
                 ClienteParticular clienteParticular = new ClienteParticular(true, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-                 try {
-                    FileOutputStream fos = new FileOutputStream("clientes.txt"); 
+                try {
+                    FileOutputStream fos = new FileOutputStream("clientes.txt");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(clienteParticular);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     System.out.print(e.toString());
                 }
                 JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
@@ -296,57 +298,48 @@ public class PantallaRegistros extends javax.swing.JFrame implements Serializabl
                 ps.setVisible(true);
                 this.dispose();
                 ps.setLocationRelativeTo(null);
-                }
-            else if (n == JOptionPane.NO_OPTION) {
+            } else if (n == JOptionPane.NO_OPTION) {
                 ClienteParticular clienteParticular = new ClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-                 try {
-                    FileOutputStream fos = new FileOutputStream("clientes.txt"); 
+                try {
+                    FileOutputStream fos = new FileOutputStream("clientes.txt");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(clienteParticular);
+                } catch (Exception e) {
+                    System.out.print(e.toString());
                 }
-            catch (Exception e){
-                System.out.print(e.toString());
-            }   
                 JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
                 PantallaSesion ps = new PantallaSesion();
                 ps.setVisible(true);
                 ps.setLocationRelativeTo(null);
-                }
-            else {
+            } else {
                 PantallaRegistros pg = new PantallaRegistros();
                 pg.setVisible(true);
                 pg.setLocationRelativeTo(null);
-                }
-        }
-        else if (anfitrion == true) {
+            }
+        } else if (anfitrion == true) {
             LocalDate fechaRegistro = new LocalDate.now();
             ClienteAnfitrion clienteAnfitrion = new ClienteAnfitrion(fechaRegistro, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
             try {
-                FileOutputStream fos = new FileOutputStream("clientes.txt"); 
+                FileOutputStream fos = new FileOutputStream("clientes.txt");
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(clienteAnfitrion);
-            }
-            catch (Exception e){
+            } catch (Exception e) {
                 System.out.print(e.toString());
             }
             JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
             PantallaSesion ps = new PantallaSesion();
             ps.setVisible(true);
             ps.setLocationRelativeTo(null);
-          
 
             //PantallaClienteAnfitron pantallaanfitrion = new PantallaClienteAnfitron();
             //pantallaanfitrion.setVisible(true);
             //pantallaanfitrion.setLocationRelativeTo(null);
-            
-
-        } 
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione un tipo de usuario.");
         }
     }
 
-        //vip false al principio
+    //vip false al principio
 
     }//GEN-LAST:event_botonRegistrarmeMouseClicked
 
@@ -382,4 +375,4 @@ public class PantallaRegistros extends javax.swing.JFrame implements Serializabl
     private javax.swing.JTextField textTelefonoRegistro;
     private javax.swing.JTextField txtDniRegistro;
     // End of variables declaration//GEN-END:variables
-}
+

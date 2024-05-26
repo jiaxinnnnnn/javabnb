@@ -41,5 +41,10 @@ public class GestionRegistroClienteAnfitrion implements Serializable{
             clienteanfitrion.setTelefono(nuevoTelefono);   
         }
         }
+    
+    
+    
+    
+    
 }
 
