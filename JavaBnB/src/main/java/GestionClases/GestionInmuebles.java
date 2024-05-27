@@ -10,17 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import Clases.ClienteAnfitrion;
-import java.io.FileOutputStream;
+import java.io.EOFException;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class GestionInmuebles {
-
+    
+  
     private static ArrayList<Inmueble> listainmuebles = new ArrayList<>();
+    LocalDate fechaInicio;
+    LocalDate fechaFin;
+   
 
     public GestionInmuebles() {
     }
@@ -111,7 +117,7 @@ public class GestionInmuebles {
         
 
     }
-        public static ArrayList<Inmueble> getInmueblePorTipoApart() {
+    public static ArrayList<Inmueble> getInmueblePorTipoApart() {
         Comparator comparadorTipo = new Comparator() {
 
             @Override
@@ -125,9 +131,11 @@ public class GestionInmuebles {
         // Ordenar la lista utilizando el Comparator
         Collections.sort(listainmuebles, comparadorTipo);
         return listainmuebles;
-
+    }
         
-
+        
+    public static long calcularDiasEstancia(LocalDate fechaInicio, LocalDate fechaFin) {
+        return ChronoUnit.DAYS.between(fechaInicio, fechaFin);
     }
 }
 

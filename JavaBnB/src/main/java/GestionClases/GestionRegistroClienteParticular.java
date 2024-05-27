@@ -29,17 +29,19 @@ public class GestionRegistroClienteParticular {
     }
 
     //método para añadir clientes
-    public static String altaClienteParticular(ClienteParticular clienteparticular) {
+    public static ArrayList<ClienteParticular> altaClienteParticular(ClienteParticular clienteparticular) {
         try {
 
             if (listaClienteParticular.contains(clienteparticular)) {
                 System.out.println("Error: cliente existente");
             }
             listaClienteParticular.add(clienteparticular);
-            return "Cliente dada de alta correctamente";
-        } finally {
-            System.out.println("Error en la entrada");
+            return listaClienteParticular;
+        } 
+        catch (Exception e) {
+            System.out.print(e);
         }
+        return listaClienteParticular;
     }
 
     //método búsqueda de ofertas que devuelve una lista con las oferta encontradas

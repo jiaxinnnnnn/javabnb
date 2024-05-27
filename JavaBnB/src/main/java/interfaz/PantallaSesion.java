@@ -1,16 +1,30 @@
 package interfaz;
 
+import Clases.Cliente;
+import Clases.ClienteAnfitrion;
+import Clases.ClienteParticular;
+import GestionClases.GestionRegistroClienteAnfitrion;
 import GestionClases.GestionRegistroClienteParticular;
 import interfaz.PantallaAdmin;
-import interfaz.PantallaClienteAnfitron;
+import interfaz.PantallaClienteAnfitrion;
 import interfaz.PantallaClienteParticular;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 public class PantallaSesion extends javax.swing.JFrame {
+    
+
+    GestionRegistroClienteParticular gp = new GestionRegistroClienteParticular();
+    GestionRegistroClienteAnfitrion ga = new GestionRegistroClienteAnfitrion();
 
     public PantallaSesion() {
         initComponents();
-    }
 
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -134,60 +148,74 @@ public class PantallaSesion extends javax.swing.JFrame {
         //if la entrada coincide con algo de la tabla de los admins o con
         //la tabal de anfitriones o clientes.
 
-        String texto = textCorreoIS.getText();
-        String texto2 = textClaveIS.getText();
-
+        String correo = textCorreoIS.getText();
+        String clave = textClaveIS.getText();
         
+        try{
+            FileInputStream fis = new FileInputStream("clientesParticular.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            while (true){
+                ClienteParticular clienteParticular = new ClienteParticular();
+                clienteParticular = (ClienteParticular) ois.readObject();
+                gp.altaClienteParticular(clienteParticular);
+            }
+        }
+        catch (ClassNotFoundException cfe){
+           System.out.print(cfe.toString());
+        }
+        catch (Exception e){
+           System.out.print(e.toString());
+        }
         
-        GestionRegistroClienteParticular clienteparticular = new GestionRegistroClienteParticular();
-        boolean correoClave = clienteparticular.validarClienteParticular(texto, texto2);
-        
-        if (correoClave==true){
-            PantallaClienteParticular pantalla3 = new PantallaClienteParticular();
-            pantalla3.setVisible(true);
-            this.dispose();
-            pantalla3.setLocationRelativeTo(null);
-        } else {
-            System.out.println("Ha ocurrido un error");
-        
+        try{
+            FileInputStream fis = new FileInputStream("clientesAnfitrion.dat");
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            while (true){
+                ClienteAnfitrion clienteAnfitrion = new ClienteAnfitrion();
+                clienteAnfitrion = (ClienteAnfitrion) ois.readObject();
+                ga.altaClienteAnfitrion(clienteAnfitrion);
+            }
+        }
+        catch (ClassNotFoundException cfe){
+           System.out.print(cfe.toString());
+        }
+        catch (Exception e){
+           System.out.print(e.toString());
         }
         
         
-        
-        if ("Hola".equals(texto) && "Adios".equals(texto2)) {
-
-            PantallaClienteAnfitron pantalla1 = new PantallaClienteAnfitron();
-            pantalla1.setVisible(true);
-            this.dispose();
-            pantalla1.setLocationRelativeTo(null);
-
-        } else if ("Adios".equals(texto) && "Hola".equals(texto2)){
-            PantallaClienteParticular pantalla2 = new PantallaClienteParticular();
-            pantalla2.setVisible(true);
-            this.dispose();
-            pantalla2.setLocationRelativeTo(null);
-        
-        } else if ("11".equals(texto) && "22".equals(texto2)){
-            PantallaAdmin pantalla3 = new PantallaAdmin();
-            pantalla3.setVisible(true);
-            this.dispose();
-            pantalla3.setLocationRelativeTo(null);
-        } else {
-            System.out.println("Ha habido un error");
-        
+        if (gp.busquedaClienteParticular(correo, clave) == null ){
+            JOptionPane.showMessageDialog(this, "Correo o clave incorrectos");
         }
-
+        
+        if (gp.busquedaClienteParticular(correo, clave) != null){
+            PantallaClienteParticular pcp = new PantallaClienteParticular();
+            pcp.setVisible(true);
+            pcp.setLocationRelativeTo(null);
+        }
+                
+        if (ga.busquedaClienteAnfitrion(correo, clave) == null){
+            JOptionPane.showMessageDialog(this, "Correo o clave incorrectos");
+        }
+        
+        if (ga.busquedaClienteAnfitrion(correo, clave) != null){
+            PantallaClienteAnfitrion pca = new PantallaClienteAnfitrion();
+            pca.setVisible(true);
+            pca.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_botonEntrarActionPerformed
 
+   
+    
     private void botonNoTengoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNoTengoCuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonNoTengoCuentaActionPerformed
 
     private void botonNoTengoCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNoTengoCuentaMouseClicked
-        PantallaRegistros funcion1 = new PantallaRegistros();
-        funcion1.setVisible(true);
+        PantallaRegistros pr= new PantallaRegistros();
+        pr.setVisible(true);
         this.dispose();
-        funcion1.setLocationRelativeTo(null);
+        pr.setLocationRelativeTo(null);
     }//GEN-LAST:event_botonNoTengoCuentaMouseClicked
 
     private void botonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEntrarMouseClicked

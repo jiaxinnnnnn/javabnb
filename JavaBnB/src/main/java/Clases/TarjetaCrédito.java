@@ -15,12 +15,40 @@ public class TarjetaCrédito {
     private String nombre;
     private long número;
     private LocalDate fechaCaducidad;
+    private double importe;
+
+  
 
     public TarjetaCrédito(String nombre, long número, LocalDate fechaCaducidad) {
         this.nombre = nombre;
         this.número = número;
         this.fechaCaducidad = fechaCaducidad;
+        this.importe = 0;
     }
+    
+      /**
+     * Get the value of Importe
+     *
+     * @return the value of Importe
+     */
+    public double getImporte() {
+        return importe;
+    }
+
+    /**
+     * Set the value of Importe
+     *
+     * @param Importe new value of Importe
+     */
+    public void setImporte(ClienteParticular clienteParticular, int días, double precioNoche) {
+        if (clienteParticular.isVip()){
+            this.importe = días * precioNoche * 0.9;
+        }
+        else {
+            this.importe = días * precioNoche;  
+        }
+    }
+
     
     /**
      * Get the value of fechaCaducidad

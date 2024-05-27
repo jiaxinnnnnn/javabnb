@@ -20,10 +20,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 
-public class PantallaRegistros extends javax.swing.JFrame implemets Serializable{
+public class PantallaRegistros extends javax.swing.JFrame implements Serializable {
+ 
     
-
-
     /**
      * Creates new form Pantalla1 /constructor
      */
@@ -281,13 +280,13 @@ public class PantallaRegistros extends javax.swing.JFrame implemets Serializable
         String textoTelRegistros = textTelefonoRegistro.getText();
         boolean anfitrion = boolRegistroAnfitrion.isSelected();
         boolean particular = boolRegistroParticular.isSelected();
-
+        
         if (particular == true) {
             int n = JOptionPane.showConfirmDialog(this, "¿Es un cliente VIP?", "VIP", JOptionPane.YES_NO_CANCEL_OPTION);
             if (n == JOptionPane.YES_OPTION) {
                 ClienteParticular clienteParticular = new ClienteParticular(true, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
                 try {
-                    FileOutputStream fos = new FileOutputStream("clientes.txt");
+                    FileOutputStream fos = new FileOutputStream("clientesParticular.dat");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(clienteParticular);
                 } catch (Exception e) {
@@ -301,7 +300,7 @@ public class PantallaRegistros extends javax.swing.JFrame implemets Serializable
             } else if (n == JOptionPane.NO_OPTION) {
                 ClienteParticular clienteParticular = new ClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
                 try {
-                    FileOutputStream fos = new FileOutputStream("clientes.txt");
+                    FileOutputStream fos = new FileOutputStream("clientesParticular.dat");
                     ObjectOutputStream oos = new ObjectOutputStream(fos);
                     oos.writeObject(clienteParticular);
                 } catch (Exception e) {
@@ -317,10 +316,10 @@ public class PantallaRegistros extends javax.swing.JFrame implemets Serializable
                 pg.setLocationRelativeTo(null);
             }
         } else if (anfitrion == true) {
-            LocalDate fechaRegistro = new LocalDate.now();
+            LocalDate fechaRegistro = LocalDate.now();
             ClienteAnfitrion clienteAnfitrion = new ClienteAnfitrion(fechaRegistro, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
             try {
-                FileOutputStream fos = new FileOutputStream("clientes.txt");
+                FileOutputStream fos = new FileOutputStream("clientesAnfitrion.dat");
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(clienteAnfitrion);
             } catch (Exception e) {
@@ -337,10 +336,7 @@ public class PantallaRegistros extends javax.swing.JFrame implemets Serializable
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, seleccione un tipo de usuario.");
         }
-    }
-
     //vip false al principio
-
     }//GEN-LAST:event_botonRegistrarmeMouseClicked
 
     private void boolRegistroParticularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boolRegistroParticularActionPerformed
@@ -376,3 +372,4 @@ public class PantallaRegistros extends javax.swing.JFrame implemets Serializable
     private javax.swing.JTextField txtDniRegistro;
     // End of variables declaration//GEN-END:variables
 
+}
