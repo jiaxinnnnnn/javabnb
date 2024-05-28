@@ -11,67 +11,62 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GestionRegistroClienteParticular {
 
-    private static final String FILENAME = "usuarios.dat";
+    private static ArrayList<ClienteParticular> listaClienteParticular = new ArrayList<>();
 
-    private final ArrayList<ClienteParticular> listaClientesParticular = new ArrayList<>();
+    public GestionRegistroClienteParticular() {
+    }
 
-    public void registrarClienteParticulares(boolean vip, String correo, String clave, String nombre, String dni, String telefono) throws FileNotFoundException, IOException, ClassNotFoundException {
+    public static ArrayList<ClienteParticular> getListaClienteParticular() {
+        return listaClienteParticular;
+    }
 
-        ClienteParticular clienteparticular = new ClienteParticular(vip, correo, clave, nombre, dni, telefono);
+    public static void setClienteParticular(ArrayList<ClienteParticular> clienteparticular) {
+        GestionRegistroClienteParticular.listaClienteParticular = clienteparticular;
+    }
 
-        HashMap<String, ClienteParticular> hashmap1 = new HashMap<>();
-        hashmap1.put(clienteparticular.getCorreo(), clienteparticular);
-
-        //fata excepciones
-        FileOutputStream fosPer = new FileOutputStream("hashmapclienteparticular.dat");
-        ObjectOutputStream oosPer = new ObjectOutputStream(fosPer);
-        oosPer.writeObject(hashmap1);
-        fosPer.close();
-        oosPer.close();
-
-        FileInputStream fisPer = new FileInputStream("hashmapclienteparticular.dat");
-        ObjectInputStream oisPer = new ObjectInputStream(fisPer);
+    //método para añadir clientes
+    public static String altaClienteParticular(ClienteParticular clienteparticular) {
         try {
-            while (true) {
-                hashmap1 = (HashMap) oisPer.readObject();
-                System.out.println(hashmap1.toString());
+
+            if (listaClienteParticular.contains(clienteparticular)) {
+                System.out.println("Error: cliente existente");
             }
-        } catch (EOFException e) {
-            System.out.println("Lectura de los objetos de tipo Persona finalizada");
+            listaClienteParticular.add(clienteparticular);
+            return "Cliente dada de alta correctamente";
+        } finally {
+            System.out.println("Error en la entrada");
         }
-
-        fisPer.close();
-        
-        
-
     }
 
-    public void registrarClienteParticular(boolean vip, String correo, String clave, String nombre, String dni, String telefono) {
-        ClienteParticular clienteparticular = new ClienteParticular(vip, correo, clave, nombre, dni, telefono);
+    //método búsqueda de ofertas que devuelve una lista con las oferta encontradas
+    public static List<ClienteParticular> busquedaClienteParticular(String correo, String clave) {
 
-        listaClientesParticular.add(clienteparticular);
-        System.out.println(listaClientesParticular);
-    }
-
-    public boolean validarClienteParticular(String correo, String clave) {
-        //comprobar si hay algo en la lista
-
-        if (listaClientesParticular.isEmpty()) {
-            System.out.println("La lista de clientes particulares está vacía.");
-        } else {
-            System.out.println("La lista de clientes particulares no está vacía.");
+        List<ClienteParticular> listabuscarclientepart = listaClienteParticular.stream()
+                .filter(oe -> (oe.getCorreo().equals(correo) && oe.getClave().equals(clave)))
+                .sorted().collect(Collectors.toList());
+        /* Sin streams:
+        ArrayList<ClienteParticular> buscarclienteparticular = new ArrayList<>();
+        for (ClienteParticular oe : listaClienteParticular) {
+                if (oe.getCorreo().equals(correo) && oe.getClave().equals(clave)) {
+                    listabuscarclientepart.add(oe);
+                }
         }
-        for (ClienteParticular clienteparticular : listaClientesParticular) {
-            String correoUsuario = clienteparticular.getCorreo();
-            String claveUsuario = clienteparticular.getClave();
-            if (correoUsuario.equals(correo) && claveUsuario.equals(clave)) {
-                return true; //pasa siguiente pantalla
-            }
-        }
-        return false; //mensaje error
-    }
+        return ofertasBuscadas;
+         */
 
+        return listabuscarclientepart;
+    }
 }
+
+    
+    
+    
+    
+    
+    
+
+
