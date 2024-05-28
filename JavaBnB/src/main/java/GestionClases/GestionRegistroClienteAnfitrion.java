@@ -2,6 +2,11 @@ package GestionClases;
 
 import Clases.ClienteAnfitrion;
 import Clases.ClienteParticular;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,22 +30,27 @@ public class GestionRegistroClienteAnfitrion implements Serializable{
     }
 
     //método para añadir clientes
-    public static ArrayList<ClienteAnfitrion> altaClienteAnfitrion(ClienteAnfitrion clienteAnfitrion) {
-        try {
-
-            if (listaClienteAnfitrion.contains(clienteAnfitrion)) {
-                System.out.println("Error: cliente existente");
+    public static boolean altaClienteAnfitrion(ClienteAnfitrion clienteAnfitrion) {
+            if (!listaClienteAnfitrion.contains(clienteAnfitrion)) {
+                listaClienteAnfitrion.add(clienteAnfitrion);
+                return true;
             }
             else {
-                listaClienteAnfitrion.add(clienteAnfitrion);
-                return listaClienteAnfitrion;
+                return false;
             } 
         }
-        catch (Exception e){
-            System.out.print(e.toString());
-        }
-        return listaClienteAnfitrion;
+
+    //método para eliminar clientes
+    public static boolean bajaClienteAnfitrion(ClienteAnfitrion clienteAnfitrion) {
+            if (listaClienteAnfitrion.contains(clienteAnfitrion)) {
+                listaClienteAnfitrion.remove(clienteAnfitrion);
+                return true;
+            }
+            else {
+                return false;
+            } 
     }
+    
 
     //método búsqueda de ofertas que devuelve una lista con las oferta encontradas
     public static List<ClienteAnfitrion> busquedaClienteAnfitrion(String correo, String clave) {
@@ -60,6 +70,39 @@ public class GestionRegistroClienteAnfitrion implements Serializable{
 
         return listaBuscarClienteAnf;
     }
+    
+         /** Guarda los datos de Clientes Anfitriones en el fichero */
+    public static void guardarClientesA() {
+        try {
+            //Si hay datos los guardamos...
+            if (!listaClienteAnfitrion.isEmpty()) {
+                try (FileOutputStream fos = new FileOutputStream("clienteAnfitrion.dat")) {
+                    ObjectOutputStream oos= new ObjectOutputStream(fos);
+                    //guardamos el array de Clientes Particulares
+                    oos.writeObject(listaClienteAnfitrion);
+                }
+            } else {
+                System.out.println("Error: No hay datos...");
+            }
+
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } 
+    }
+    
+     /** Carga los datos de Clientes Anfitriones del fichero */
+    public static void cargarClientesA() {
+        try {
+            try (FileInputStream fis = new FileInputStream("clienteAnfitrion.dat")) {
+                ObjectInputStream ois= new ObjectInputStream(fis);
+                listaClienteAnfitrion = (ArrayList) ois.readObject();
+            }
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error de clase no encontrada: " + cnfe.getMessage());
+        } 
+    }//fin cargarDatos
    
 }
 

@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author sgsic
  */
-public class FacturaReserva {
+public class Reserva {
     
    private Date fechaReserva;
    private Cliente cliente;
@@ -19,7 +19,7 @@ public class FacturaReserva {
    private LocalDate fechaEntrada;
    private LocalDate fechaSalida;
 
-    public FacturaReserva(Date fechaReserva, Cliente cliente, Inmueble inmueble, LocalDate fechaEntrada, LocalDate fechaSalida) {
+    public Reserva(Date fechaReserva, Cliente cliente, Inmueble inmueble, LocalDate fechaEntrada, LocalDate fechaSalida) {
         this.fechaReserva = fechaReserva;
         this.cliente = cliente;
         this.inmueble = inmueble;

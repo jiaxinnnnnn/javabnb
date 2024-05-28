@@ -9,6 +9,7 @@ import Clases.ClienteParticular;
 import GestionClases.GestionRegistroClienteAnfitrion;
 import GestionClases.GestionRegistroClienteParticular;
 import interfaz.PantallaSesion;
+import java.awt.HeadlessException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -278,64 +279,33 @@ public class PantallaRegistros extends javax.swing.JFrame implements Serializabl
         String textoClaveRegistros = textClaveRegistro.getText();
         String textoDniRegistros = txtDniRegistro.getText();
         String textoTelRegistros = textTelefonoRegistro.getText();
-        boolean anfitrion = boolRegistroAnfitrion.isSelected();
-        boolean particular = boolRegistroParticular.isSelected();
         
-        if (particular == true) {
+        try{
+        if (boolRegistroParticular.isSelected()) {
             int n = JOptionPane.showConfirmDialog(this, "¿Es un cliente VIP?", "VIP", JOptionPane.YES_NO_CANCEL_OPTION);
             if (n == JOptionPane.YES_OPTION) {
                 ClienteParticular clienteParticular = new ClienteParticular(true, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-                try {
-                    FileOutputStream fos = new FileOutputStream("clientesParticular.dat");
-                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    oos.writeObject(clienteParticular);
-                } catch (Exception e) {
-                    System.out.print(e.toString());
-                }
-                JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
-                PantallaSesion ps = new PantallaSesion();
-                ps.setVisible(true);
-                this.dispose();
-                ps.setLocationRelativeTo(null);
-            } else if (n == JOptionPane.NO_OPTION) {
-                ClienteParticular clienteParticular = new ClienteParticular(false, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-                try {
-                    FileOutputStream fos = new FileOutputStream("clientesParticular.dat");
-                    ObjectOutputStream oos = new ObjectOutputStream(fos);
-                    oos.writeObject(clienteParticular);
-                } catch (Exception e) {
-                    System.out.print(e.toString());
-                }
-                JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
-                PantallaSesion ps = new PantallaSesion();
-                ps.setVisible(true);
-                ps.setLocationRelativeTo(null);
+                if (GestionRegistroClienteParticular.altaClienteParticular(clienteParticular)) {
+                JOptionPane.showMessageDialog(this, "Producto dado de alta.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                PantallaRegistros pg = new PantallaRegistros();
-                pg.setVisible(true);
-                pg.setLocationRelativeTo(null);
+                JOptionPane.showMessageDialog(this, "Error al dar de alta.", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
-        } else if (anfitrion == true) {
+            }
+        }
+        else {
             LocalDate fechaRegistro = LocalDate.now();
             ClienteAnfitrion clienteAnfitrion = new ClienteAnfitrion(fechaRegistro, textoCorreoRegistros, textoClaveRegistros, textoNombreRegistros, textoDniRegistros, textoTelRegistros);
-            try {
-                FileOutputStream fos = new FileOutputStream("clientesAnfitrion.dat");
-                ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(clienteAnfitrion);
-            } catch (Exception e) {
-                System.out.print(e.toString());
+           
+            if (GestionRegistroClienteAnfitrion.altaClienteAnfitrion(clienteAnfitrion)) {
+                JOptionPane.showMessageDialog(this, "Producto dado de alta.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al dar de alta.", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
-            JOptionPane.showMessageDialog(this, "Cliente registrado existosamente.");
-            PantallaSesion ps = new PantallaSesion();
-            ps.setVisible(true);
-            ps.setLocationRelativeTo(null);
-
-            //PantallaClienteAnfitron pantallaanfitrion = new PantallaClienteAnfitron();
-            //pantallaanfitrion.setVisible(true);
-            //pantallaanfitrion.setLocationRelativeTo(null);
-        } else {
-            JOptionPane.showMessageDialog(this, "Por favor, seleccione un tipo de usuario.");
         }
+        }catch (HeadlessException | NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Excepción al dar de alta.", "Mensaje", JOptionPane.ERROR_MESSAGE);
+        }
+             
     //vip false al principio
     }//GEN-LAST:event_botonRegistrarmeMouseClicked
 

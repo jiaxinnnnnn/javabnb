@@ -179,7 +179,7 @@ public class PantallaAdmin extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 987, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -196,9 +196,9 @@ public class PantallaAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-     public void getClientes(){
+     public void getInmuebles(){
        try {
-       ArrayList<Cliente> inmueblesº = new ArrayList<>();
+       ArrayList<Inmueble> inmuebles = new ArrayList<>();
        FileInputStream fis = new FileInputStream("inmuebles.txt");
        ObjectInputStream ois = new ObjectInputStream(fis);
        while (true){

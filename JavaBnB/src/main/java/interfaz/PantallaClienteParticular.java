@@ -1,7 +1,7 @@
 package interfaz;
 
 import Clases.ClienteParticular;
-import Clases.FacturaReserva;
+import Clases.Reserva;
 import Clases.InmuebleDireccion;
 import Clases.Inmueble;
 import Clases.InmuebleDatos;
@@ -21,6 +21,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.io.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -425,9 +426,13 @@ public class PantallaClienteParticular extends javax.swing.JFrame {
     }//GEN-LAST:event_fechaEntradaFieldActionPerformed
 
     private void reservarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reservarActionPerformed
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate fechaReserva = LocalDate.now();
-        FacturaReserva facturaReserva = new FacturaReserva(fechaReserva, jTable1.getSelectedRow(),);
-        clienteParticular.getTarjetaCrédito().setImporte(clienteParticular, calcularDiasEstancia(fechaInicio, fechaFin), precioNoche);
+        LocalDate fechaEntrada = LocalDate.parse(fechaEntradaField.getText(), formatter);
+        LocalDate fechaSalida = LocalDate.parse(fechaSalidaField.getText(), formatter);
+        Double precioNoche = 
+        FacturaReserva facturaReserva = new Reserva(fechaReserva, jTable1.getSelectedRow(),);
+        clienteParticular.getTarjetaCrédito().setImporte(clienteParticular, calcularDiasEstancia(fechaEntrada, fechaSalida), precioNoche);
         try {
             FileOutputStream fos = new FileOutputStream("facturas.dat");
             ObjectOutputStream oos = new ObjectOutputStream(fos);

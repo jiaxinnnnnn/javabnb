@@ -20,6 +20,7 @@ public class ClienteParticular extends Cliente implements Serializable {
     public ClienteParticular(boolean vip, String correo, String clave, String nombre, String dni, String telefono) {
         super(correo, clave, nombre, dni, telefono);
         this.vip = vip;
+        this.tarjetaCrédito = null;
     }
     
       /**
