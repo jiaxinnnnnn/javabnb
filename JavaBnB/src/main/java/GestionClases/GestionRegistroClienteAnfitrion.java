@@ -1,50 +1,108 @@
 package GestionClases;
 
 import Clases.ClienteAnfitrion;
+import Clases.ClienteParticular;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
+import java.util.stream.Collectors;
+import javax.swing.JOptionPane;
 
 public class GestionRegistroClienteAnfitrion implements Serializable{
 
-    private static final String FILENAME = "usuarios.dat";
+     private static ArrayList<ClienteAnfitrion> listaClienteAnfitrion = new ArrayList<>();
 
-    private final List<ClienteAnfitrion> listaClientesAnfitrion = new ArrayList<>();
-
-    public void registrarClienteAnfitrion(Date fechaRegistro, boolean superanfitrion, String correo, String clave, String nombre, String dni, String telefono) {
-        ClienteAnfitrion clienteanfitrion = new ClienteAnfitrion ( fechaRegistro, superanfitrion, correo, clave, nombre, dni,telefono);
-
-        listaClientesAnfitrion.add(clienteanfitrion);
-        System.out.println(listaClientesAnfitrion);
+    public GestionRegistroClienteAnfitrion() {
     }
 
-    public boolean validarClienteAnfitrion(String correo, String clave) {
-        for (ClienteAnfitrion clienteanfitrion : listaClientesAnfitrion) {
-            //String correoUsuario = cliente.getCorreo();
-            //String claveUsuario = cliente.getClave();
-            if (clienteanfitrion.getCorreo().equals(correo) && clienteanfitrion.getClave().equals(clave)) {
-                return true; //pasa siguiente pantalla
+    public static ArrayList<ClienteAnfitrion> getListaClienteParticular() {
+        return listaClienteAnfitrion;
+    }
+
+    public static void setClienteParticular(ArrayList<ClienteAnfitrion> clienteAnfitrion) {
+        GestionRegistroClienteAnfitrion.listaClienteAnfitrion = clienteAnfitrion;
+    }
+
+    //método para añadir clientes
+    public static boolean altaClienteAnfitrion(ClienteAnfitrion clienteAnfitrion) {
+            if (!listaClienteAnfitrion.contains(clienteAnfitrion)) {
+                listaClienteAnfitrion.add(clienteAnfitrion);
+                return true;
             }
+            else {
+                return false;
+            } 
         }
-        return false; //mensaje error
+
+    //método para eliminar clientes
+    public static boolean bajaClienteAnfitrion(ClienteAnfitrion clienteAnfitrion) {
+            if (listaClienteAnfitrion.contains(clienteAnfitrion)) {
+                listaClienteAnfitrion.remove(clienteAnfitrion);
+                return true;
+            }
+            else {
+                return false;
+            } 
     }
     
-    public void cambiarDatosClienteAnfitrion(ClienteAnfitrion clienteanfitrion, Date nuevaFechaRegistro, boolean nuevoSuperanfitrion, String nuevoCorreo, String nuevaClave, String nuevoNombre, String nuevoDni, String nuevoTelefono){
-        if (listaClientesAnfitrion.contains(clienteanfitrion)){
-            clienteanfitrion.setFecha(nuevaFechaRegistro);
-            clienteanfitrion.setSuperanfitrion(nuevoSuperanfitrion);
-            clienteanfitrion.setCorreo(nuevoCorreo);
-            clienteanfitrion.setClave(nuevaClave);
-            clienteanfitrion.setNombre(nuevoNombre);
-            clienteanfitrion.setDni(nuevoDni);
-            clienteanfitrion.setTelefono(nuevoTelefono);   
+
+    //método búsqueda de ofertas que devuelve una lista con las oferta encontradas
+    public static List<ClienteAnfitrion> busquedaClienteAnfitrion(String correo, String clave) {
+
+        List<ClienteAnfitrion> listaBuscarClienteAnf = listaClienteAnfitrion.stream()
+                .filter(ca -> (ca.getCorreo().equals(correo) && ca.getClave().equals(clave)))
+                .sorted().collect(Collectors.toList());
+        /* Sin streams:
+        ArrayList<ClienteAnfitrion> buscarclienteAnfitrion = new ArrayList<>();
+        for (ClienteAnfitrion ca : listaClienteAnfitrion) {
+                if (ca.getCorreo().equals(correo) && ca.getClave().equals(clave)) {
+                    listaBuscarClienteAnf.add(ca);
+                }
         }
-        }
+        return ofertasBuscadas;
+         */
+
+        return listaBuscarClienteAnf;
+    }
     
+         /** Guarda los datos de Clientes Anfitriones en el fichero */
+    public static void guardarClientesA() {
+        try {
+            //Si hay datos los guardamos...
+            if (!listaClienteAnfitrion.isEmpty()) {
+                try (FileOutputStream fos = new FileOutputStream("clienteAnfitrion.dat")) {
+                    ObjectOutputStream oos= new ObjectOutputStream(fos);
+                    //guardamos el array de Clientes Particulares
+                    oos.writeObject(listaClienteAnfitrion);
+                }
+            } else {
+                System.out.println("Error: No hay datos...");
+            }
+
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } 
+    }
     
-    
-    
-    
+     /** Carga los datos de Clientes Anfitriones del fichero */
+    public static void cargarClientesA() {
+        try {
+            try (FileInputStream fis = new FileInputStream("clienteAnfitrion.dat")) {
+                ObjectInputStream ois= new ObjectInputStream(fis);
+                listaClienteAnfitrion = (ArrayList) ois.readObject();
+            }
+        } catch (IOException ioe) {
+            System.out.println("Error de IO: " + ioe.getMessage());
+        } catch (ClassNotFoundException cnfe) {
+            System.out.println("Error de clase no encontrada: " + cnfe.getMessage());
+        } 
+    }//fin cargarDatos
+   
 }
 

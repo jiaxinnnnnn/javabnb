@@ -23,27 +23,6 @@ public class JavaBnB1 {//excepciones no tratados
         pant.setVisible(true);
         pant.setLocationRelativeTo(null);
 
-        ClienteParticular cliente = new ClienteParticular();
-        cliente.setVip(false);
-        cliente.setCorreo("dfds");
-        cliente.setClave("defvds");
-        cliente.setDni("wde");
-        cliente.setNombre("sdsa");
-        cliente.setTelefono("ervfgdfvs");
-
-        //guardar
-        FileOutputStream fosPer = new FileOutputStream( "archivoClientesParticulares.txt");
-        ObjectOutputStream oosPer = new ObjectOutputStream(fosPer);
-        oosPer.writeObject(cliente);
-        oosPer.close();
-
-        //leer
-        FileInputStream fisPer = new FileInputStream("archivoClientesParticulares.txt");
-        ObjectInputStream oisPer = new ObjectInputStream(fisPer);
-        ClienteParticular aaa = (ClienteParticular) oisPer.readObject();
-        oisPer.close();
-        System.out.println(aaa);
-
     }
 
 }

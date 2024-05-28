@@ -2,12 +2,13 @@
 package interfaz;
 import Clases.Inmueble;
 import GestionClases.GestionInmuebles;
+import java.io.Serializable;
 
 /**
  *
  * @author jiaxi
  */
-public class PantallaClienteAnfitrionModifica extends javax.swing.JFrame {
+public class PantallaClienteAnfitrionModifica extends javax.swing.JFrame implements Serializable {
 
     /**
      * Creates new form PantallaClienteAnfitrionCrear
@@ -407,8 +408,7 @@ public class PantallaClienteAnfitrionModifica extends javax.swing.JFrame {
         textoCPostal = textInmuebleCPostal.getText();
         textoCiudad = textInmuebleCiudad.getText();
         
-        GestionInmuebles gestioninmueblenew = new GestionInmuebles();
-        gestioninmueblenew.registrarInmueble(textoTitulo, numInmueblePrecio, casa, apart, textoCalle, textoCPostal, textoCiudad, numNHuesped, numNHab, numNCama, numNBaño);
+       
 
         
         
