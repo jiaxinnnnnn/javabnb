@@ -1,6 +1,6 @@
 package interfaz;
 
-import Clases.Cliente;
+
 import Clases.ClienteAnfitrion;
 import Clases.ClienteParticular;
 import GestionClases.GestionRegistroClienteAnfitrion;
@@ -8,10 +8,7 @@ import GestionClases.GestionRegistroClienteParticular;
 import interfaz.PantallaAdmin;
 import interfaz.PantallaClienteAnfitrion;
 import interfaz.PantallaClienteParticular;
-import java.io.FileInputStream;
-import java.io.ObjectInputStream;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+
 
 public class PantallaSesion extends javax.swing.JFrame {
     
@@ -19,8 +16,12 @@ public class PantallaSesion extends javax.swing.JFrame {
     GestionRegistroClienteParticular gp = new GestionRegistroClienteParticular();
     GestionRegistroClienteAnfitrion ga = new GestionRegistroClienteAnfitrion();
 
+    private List<ClienteParticular> cp;
+    private List<ClienteAnfitrion> ca;
+
     public PantallaSesion() {
         initComponents();
+
 
     }
     
@@ -32,11 +33,11 @@ public class PantallaSesion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         nombreIniciarSesion = new javax.swing.JLabel();
         textCorreoIS = new javax.swing.JTextField();
-        correoIS = new javax.swing.JLabel();
-        claveIS = new javax.swing.JLabel();
-        botonEntrar = new javax.swing.JButton();
-        botonNoTengoCuenta = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         textClaveIS = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,39 +51,23 @@ public class PantallaSesion extends javax.swing.JFrame {
             }
         });
 
-        correoIS.setText("Correo:");
-
-        claveIS.setText("Clave:");
-
-        botonEntrar.setText("Entrar");
-        botonEntrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonEntrarMouseClicked(evt);
-            }
-        });
-        botonEntrar.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("No tengo cuenta...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonEntrarActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        botonNoTengoCuenta.setText("No tengo cuenta...");
-        botonNoTengoCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonNoTengoCuentaMouseClicked(evt);
-            }
-        });
-        botonNoTengoCuenta.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Entrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonNoTengoCuentaActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        textClaveIS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textClaveISActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Clave:");
+
+        jLabel2.setText("Correo:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,14 +81,14 @@ public class PantallaSesion extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(96, 96, 96)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(correoIS, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textCorreoIS)
-                            .addComponent(claveIS, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(textClaveIS)
+                            .addComponent(textCorreoIS, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(botonNoTengoCuenta)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                                .addComponent(botonEntrar)))))
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addComponent(textClaveIS)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -112,17 +97,17 @@ public class PantallaSesion extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(nombreIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(correoIS, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addGap(19, 19, 19)
                 .addComponent(textCorreoIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(claveIS, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(textClaveIS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonNoTengoCuenta)
-                    .addComponent(botonEntrar))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
@@ -144,100 +129,44 @@ public class PantallaSesion extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textCorreoISActionPerformed
 
-    private void botonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEntrarActionPerformed
+    private boolean validarCredencialesParticular(String correo, String clave) {
+        for (ClienteParticular cliente : cp) {
+            if (cliente.getCorreo().equals(correo) && cliente.getClave().equals(clave)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean validarCredencialesAnfitrion(String correo, String clave) {
+        for (ClienteAnfitrion cliente : ca) {
+            if (cliente.getCorreo().equals(correo) && cliente.getClave().equals(clave)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        PantallaRegistros funcion1 = new PantallaRegistros();
+        funcion1.setVisible(true);
+        this.dispose();
+        funcion1.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //if la entrada coincide con algo de la tabla de los admins o con
         //la tabal de anfitriones o clientes.
 
-        String correo = textCorreoIS.getText();
-        String clave = textClaveIS.getText();
-        
-        try{
-            FileInputStream fis = new FileInputStream("clientesParticular.dat");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            while (true){
-                ClienteParticular clienteParticular = new ClienteParticular();
-                clienteParticular = (ClienteParticular) ois.readObject();
-                gp.altaClienteParticular(clienteParticular);
-            }
-        }
-        catch (ClassNotFoundException cfe){
-           System.out.print(cfe.toString());
-        }
-        catch (Exception e){
-           System.out.print(e.toString());
-        }
-        
-        try{
-            FileInputStream fis = new FileInputStream("clientesAnfitrion.dat");
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            while (true){
-                ClienteAnfitrion clienteAnfitrion = new ClienteAnfitrion();
-                clienteAnfitrion = (ClienteAnfitrion) ois.readObject();
-                ga.altaClienteAnfitrion(clienteAnfitrion);
-            }
-        }
-        catch (ClassNotFoundException cfe){
-           System.out.print(cfe.toString());
-        }
-        catch (Exception e){
-           System.out.print(e.toString());
-        }
-        
-        
-        if (gp.busquedaClienteParticular(correo, clave) == null ){
-            JOptionPane.showMessageDialog(this, "Correo o clave incorrectos");
-        }
-        
-        if (gp.busquedaClienteParticular(correo, clave) != null){
-            PantallaClienteParticular pcp = new PantallaClienteParticular();
-            pcp.setVisible(true);
-            pcp.setLocationRelativeTo(null);
-        }
-                
-        if (ga.busquedaClienteAnfitrion(correo, clave) == null){
-            JOptionPane.showMessageDialog(this, "Correo o clave incorrectos");
-        }
-        
-        if (ga.busquedaClienteAnfitrion(correo, clave) != null){
-            PantallaClienteAnfitrion pca = new PantallaClienteAnfitrion();
-            pca.setVisible(true);
-            pca.setLocationRelativeTo(null);
-        }
-    }//GEN-LAST:event_botonEntrarActionPerformed
 
-   
-    
-    private void botonNoTengoCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonNoTengoCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonNoTengoCuentaActionPerformed
-
-    private void botonNoTengoCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonNoTengoCuentaMouseClicked
-        PantallaRegistros pr= new PantallaRegistros();
-        pr.setVisible(true);
-        this.dispose();
-        pr.setLocationRelativeTo(null);
-    }//GEN-LAST:event_botonNoTengoCuentaMouseClicked
-
-    private void botonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEntrarMouseClicked
-        
-
-        
-
-    }//GEN-LAST:event_botonEntrarMouseClicked
-
-    private void textClaveISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textClaveISActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textClaveISActionPerformed
 
     /**
-     * @param args the command line arguments
-     */
-
+         * @param args the command line arguments
+         */
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botonEntrar;
-    private javax.swing.JButton botonNoTengoCuenta;
-    private javax.swing.JLabel claveIS;
-    private javax.swing.JLabel correoIS;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombreIniciarSesion;
     private javax.swing.JPasswordField textClaveIS;
