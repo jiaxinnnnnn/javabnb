@@ -11,6 +11,10 @@ public class ClienteAnfitrion extends Cliente implements Serializable {
     private LocalDate fechaRegistro;
     private boolean superAnfitrion;
     private List<Inmueble> inmuebles;
+    
+    public ClienteAnfitrion(){
+        
+    }
 
     public ClienteAnfitrion(LocalDate fechaRegistro, String correo, String clave, String nombre, String dni, String telefono) {
         super(correo, clave, nombre, dni, telefono);

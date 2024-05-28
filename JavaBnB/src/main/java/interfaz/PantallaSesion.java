@@ -1,15 +1,20 @@
 package interfaz;
 
+
 import Clases.ClienteAnfitrion;
 import Clases.ClienteParticular;
 import GestionClases.GestionRegistroClienteAnfitrion;
 import GestionClases.GestionRegistroClienteParticular;
 import interfaz.PantallaAdmin;
-import interfaz.PantallaClienteAnfitron;
+import interfaz.PantallaClienteAnfitrion;
 import interfaz.PantallaClienteParticular;
-import java.util.List;
+
 
 public class PantallaSesion extends javax.swing.JFrame {
+    
+
+    GestionRegistroClienteParticular gp = new GestionRegistroClienteParticular();
+    GestionRegistroClienteAnfitrion ga = new GestionRegistroClienteAnfitrion();
 
     private List<ClienteParticular> cp;
     private List<ClienteAnfitrion> ca;
@@ -17,8 +22,10 @@ public class PantallaSesion extends javax.swing.JFrame {
     public PantallaSesion() {
         initComponents();
 
-    }
 
+    }
+    
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -150,38 +157,7 @@ public class PantallaSesion extends javax.swing.JFrame {
         //if la entrada coincide con algo de la tabla de los admins o con
         //la tabal de anfitriones o clientes.
 
-        String texto = textCorreoIS.getText();
-        String texto2 = textClaveIS.getText();
 
-        GestionRegistroClienteParticular clienteparticular = new GestionRegistroClienteParticular();
-        GestionRegistroClienteAnfitrion clienteanfitrion = new GestionRegistroClienteAnfitrion();
-        boolean correoClave = validarCredencialesParticular(texto, texto2);
-        boolean correoclave = validarCredencialesAnfitrion(texto, texto2);
-
-        if (correoClave == true) {
-            PantallaClienteParticular pantalla3 = new PantallaClienteParticular();
-            pantalla3.setVisible(true);
-            this.dispose();
-            pantalla3.setLocationRelativeTo(null);
-        } else {
-            System.out.println("Ha ocurrido un error");
-
-        }
-        if (correoclave) {
-            PantallaClienteParticular1 panta = new PantallaClienteParticular1();
-            panta.setVisible(true);
-            this.dispose();
-            panta.setLocationRelativeTo(null);
-
-        } else {
-            System.out.println("Ha ourrido un error");
-        }
-        if ("11".equals(texto) && "22".equals(texto2)) {
-            PantallaAdmin pantalla3 = new PantallaAdmin();
-            pantalla3.setVisible(true);
-            this.dispose();
-            pantalla3.setLocationRelativeTo(null);}
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
          * @param args the command line arguments
